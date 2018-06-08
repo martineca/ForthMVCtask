@@ -18,9 +18,9 @@ namespace FourthTask.Controllers
             return View();
         }
 
-        public async Task<ActionResult> CustomersList()
+        public async Task<ActionResult> CustomersList(string searchString)
         {
-            List<Customer> CustInfo = new List<Customer>();
+            IEnumerable<Customer> CustInfo = new List<Customer>();
             string Baseurl = "http://localhost:4004";
             using (var client = new HttpClient())
             {
@@ -44,10 +44,14 @@ namespace FourthTask.Controllers
                     CustInfo = JsonConvert.DeserializeObject<List<Customer>>(CustResponse);
 
                 }
-
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    CustInfo = CustInfo.Where(s => s.ContactName.Contains(searchString));
+                }
                 //returning the employee list to view  
                 return View(CustInfo);
             }
+
         }
 
         public async Task<ActionResult> CustomerOrders(string id)
