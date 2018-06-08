@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FourthTask.Models.Customer>
+
+@{
+    ViewBag.Title = "ClientsList";
+}
+
+<h2>Orders for client</h2>
+
+<div class="form-horizontal">
+
+    <hr />
+    <div class="form-group">
+
+
+        <table class="table table-responsive" style="width:700px">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ordersNum)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                      <a href="CustomerOrders/@item.CustomerID"> @Html.DisplayFor(modelItem => item.ContactName)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ordersNum)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>  

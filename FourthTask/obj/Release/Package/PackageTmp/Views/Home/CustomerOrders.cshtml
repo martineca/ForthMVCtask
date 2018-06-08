@@ -1,0 +1,110 @@
+﻿@model FourthTask.Models.CustomerOrdersModel
+
+@{
+    ViewBag.Title = "ClientsList";
+}
+
+<h2>ClientsList</h2>
+
+<div class="form-horizontal">
+    <hr />
+    <h3>Clients details</h3>
+    <div class="form-group">
+        <table class="table table-responsive tableCustomer" >
+            <tr>
+                <th>
+                    Customer ID
+                </th>
+                <th>
+                    Customer Name
+                </th>
+                <th>
+                    Customer City
+                </th>
+                <th>
+                    Company Name
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Region
+                </th>
+                <th>
+                    PostCode
+                </th>
+                <th>
+                    Country
+                </th>
+                <th>
+                    Fax
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Model.CurrCustomer.CustomerID
+                </td>
+                <td>
+                    @Model.CurrCustomer.ContactName
+                </td>
+                <td>
+                    @Model.CurrCustomer.City
+                </td>
+                <td>
+                    @Model.CurrCustomer.CompanyName
+                </td>
+                <td>
+                    @Model.CurrCustomer.Address
+                </td>
+                <td>
+                    @Model.CurrCustomer.Region
+                </td>
+                <td>
+                    @Model.CurrCustomer.PostalCode
+                </td>
+                <td>
+                    @Model.CurrCustomer.Country
+                </td>
+                <td>
+                    @Model.CurrCustomer.Fax
+                </td>
+            </tr>
+        </table>
+
+        <h3>Clients orders</h3>
+        <table class="table table-responsive" style="width:800px">
+            <tr>
+                <th>
+                    OrderID
+                </th>
+                <th>
+                    TotalSpent
+                </th>
+                <th>
+                    ProductsQuantity
+                </th>
+                <th>
+                    Order Message
+                </th>
+            </tr>
+            @foreach (var item in Model.CustomerOrders)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+
+                </tr>
+            }
+        </table>
+    </div>
+</div>  
